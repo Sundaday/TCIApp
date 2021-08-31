@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  email String
+  mdp String
+  role ROLE @default(DEVELOPER)
+  avatar String
+  date DateTime
+}
+
+model Guilde {
+  id Int @id @default(autoincrement())
+  name String
+  numberOfPlayer Int
+  classement Int
+  date DateTime
+}
+
+model Team{
+  id Int @id @default(autoincrement())
+  nameTeam String
+  personnage String
+  level Int
+  date DateTime
+}
+
+model Type{
+  id Int @id @default(autoincrement())
+  name String
+}
+
+model Raid{
+  id Int @id @default(autoincrement())
+  name String
+  date DateTime
+}
+
+model Boss{
+  id Int @id @default(autoincrement())
+  name String
+  life Int
+}
+
+enum ROLE{
+  USER
+  ADMIN
+  DEVELOPER
+}
