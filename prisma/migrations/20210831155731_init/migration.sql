@@ -29,7 +29,7 @@ CREATE TABLE "Team" (
     "id" SERIAL NOT NULL,
     "nameTeam" TEXT NOT NULL,
     "personnage" TEXT NOT NULL,
-    "level" INTEGER NOT NULL,
+    "score" INTEGER NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
 
     PRIMARY KEY ("id")
