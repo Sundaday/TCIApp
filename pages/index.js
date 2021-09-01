@@ -18,12 +18,8 @@ export default function Home() {
             <h1 className = {styles.title}>
                 Bienvenue dans l'alliance{' '}<a href = "https://nextjs.org">TCI</a>
             </h1>
-                <p className = {styles.description}>
-                    <Image
-                        src="/logotci.png"
-                        width={170}
-                        height={170}
-                    />
+                <p className = {styles.description}>Edit by{' '}
+                    <code className = {styles.code}>Sundaday</code>
                 </p>
             <div className = {styles.grid}>
                 <a href = "https://nextjs.org/docs"className = {styles.card}>
@@ -54,10 +50,10 @@ export default function Home() {
                 rel = "noopener noreferrer">Powered by {' '}
                     <span className = {styles.logo}>
                         <Image 
-                            src = "/vercel.svg"
+                            src = "/logotci.png"
                             alt = "Vercel Logo"
-                            width = {72}
-                            height = {16}
+                            width = {70}
+                            height = {70}
                         /> 
                     </span > 
             </a>    
