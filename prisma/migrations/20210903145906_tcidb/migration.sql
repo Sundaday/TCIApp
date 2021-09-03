@@ -8,7 +8,7 @@ CREATE TABLE "User" (
     "mdp" TEXT NOT NULL,
     "role" "ROLE" NOT NULL DEFAULT E'DEVELOPER',
     "avatar" TEXT NOT NULL,
-    "date" TIMESTAMP(3) NOT NULL,
+    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     PRIMARY KEY ("id")
 );
@@ -19,7 +19,7 @@ CREATE TABLE "Team" (
     "nameTeam" TEXT NOT NULL,
     "personnage" TEXT NOT NULL,
     "score" INTEGER NOT NULL,
-    "date" TIMESTAMP(3) NOT NULL,
+    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     PRIMARY KEY ("id")
 );
@@ -28,7 +28,7 @@ CREATE TABLE "Team" (
 CREATE TABLE "Raid" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "date" TIMESTAMP(3) NOT NULL,
+    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     PRIMARY KEY ("id")
 );

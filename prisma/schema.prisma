@@ -12,6 +12,7 @@ generator client {
 
 model User {
   id Int @id @default(autoincrement())
+  guilde String
   email String
   mdp String
   role ROLE @default(DEVELOPER)
