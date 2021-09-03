@@ -14,31 +14,12 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
-CREATE TABLE "Guilde" (
-    "id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
-    "numberOfPlayer" INTEGER NOT NULL,
-    "classement" INTEGER NOT NULL,
-    "date" TIMESTAMP(3) NOT NULL,
-
-    PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "Team" (
     "id" SERIAL NOT NULL,
     "nameTeam" TEXT NOT NULL,
     "personnage" TEXT NOT NULL,
     "score" INTEGER NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
-
-    PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "Type" (
-    "id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
 
     PRIMARY KEY ("id")
 );

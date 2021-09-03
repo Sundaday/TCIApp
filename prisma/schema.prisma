@@ -16,15 +16,7 @@ model User {
   mdp String
   role ROLE @default(DEVELOPER)
   avatar String
-  date DateTime
-}
-
-model Guilde {
-  id Int @id @default(autoincrement())
-  name String
-  numberOfPlayer Int
-  classement Int
-  date DateTime
+  date DateTime @default(now())
 }
 
 model Team{
@@ -32,18 +24,13 @@ model Team{
   nameTeam String
   personnage String
   score Int
-  date DateTime
-}
-
-model Type{
-  id Int @id @default(autoincrement())
-  name String
+  date DateTime @default(now())
 }
 
 model Raid{
   id Int @id @default(autoincrement())
   name String
-  date DateTime
+  date DateTime @default(now())
 }
 
 model Boss{

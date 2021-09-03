@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import { fetcher } from '../utils/fetcher.js'
 import { Container, Form, Header } from 'semantic-ui-react'
@@ -16,31 +17,36 @@ export default function Home() {
 
         <main className = {styles.main}>
             <h1 className = {styles.title}>
-                Bienvenue dans l'alliance{' '}<a href = "https://nextjs.org">TCI</a>
+                Bienvenue dans l'alliance{' '}TCI
             </h1>
                 <p className = {styles.description}>Edit by{' '}
                     <code className = {styles.code}>Sundaday</code>
                 </p>
             <div className = {styles.grid}>
-                <a href = "https://nextjs.org/docs"className = {styles.card}>
-                    <h2> Impératrice &rarr; </h2>
-                        <p> Liste User + teams + types + scores + classement</p>
-                </a>
-
-                <a href = "https://nextjs.org/learn"className = {styles.card}>
-                    <h2> Tempérance &rarr; </h2>
-                        <p> Liste User + teams + types + scores + classement + académie </p>
-                </a>
-
-                <a href = "https://github.com/vercel/next.js/tree/master/examples"className = {styles.card}>
-                    <h2> Equilibrage &rarr; </h2> 
-                        <p> Users + Position + Boss + Pv + SortBy()</p>
-                </a>
-
-                <a href = "https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"className = {styles.card}>
-                    <h2> Stats Raid &rarr; </h2> 
-                        <p> Users + teams + type + scores + date </p>
-                </a> 
+                <Link href='/imperatrice'>
+                    <a className = {styles.card}>
+                        <h2> Impératrice &rarr; </h2>
+                            <p> Liste User + teams + scores + classement</p>
+                    </a>        
+                </Link>
+                <Link href='/temperance'>
+                    <a className = {styles.card}>
+                        <h2> Tempérance &rarr; </h2>
+                            <p> Liste User + teams + scores + classement + académie </p>
+                    </a>
+                </Link>
+                <Link href='/equilibrage'>
+                    <a className = {styles.card}>
+                        <h2> Equilibrage &rarr; </h2> 
+                            <p> Users + Position + Boss + Pv + SortBy()</p>
+                    </a>
+                </Link>
+                <Link href='/raid'>
+                    <a className = {styles.card}>
+                        <h2> Stats Raid &rarr; </h2> 
+                            <p> Users + teams + scores + dateTime</p>
+                    </a>
+                </Link>
             </div> 
         </main>
 
