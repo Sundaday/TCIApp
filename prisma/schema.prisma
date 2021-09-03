@@ -18,6 +18,8 @@ model User {
   role ROLE @default(DEVELOPER)
   avatar String
   date DateTime @default(now())
+  team Team @relation("teamHasUser",fields: [teamId],references:[id])
+  teamId Int
 }
 
 model Team{
@@ -26,18 +28,25 @@ model Team{
   personnage String
   score Int
   date DateTime @default(now())
+  user User? @relation("teamHasUser")
+  raid Raid @relation(fields: [raidId],references: [id])
+  raidId Int
 }
 
 model Raid{
   id Int @id @default(autoincrement())
   name String
   date DateTime @default(now())
+  boss Boss @relation("bossHasRaid",fields: [bossId],references: [id])
+  bossId Int
+  team Team? @relation()
 }
 
 model Boss{
   id Int @id @default(autoincrement())
   name String
   life Int
+  raid Raid? @relation("bossHasRaid")
 }
 
 enum ROLE{
