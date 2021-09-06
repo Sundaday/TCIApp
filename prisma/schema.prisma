@@ -1,55 +1,77 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+}
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
+model USER {
+  pseudo       String? @db.VarChar(50)
+  mot_de_passe String? @db.VarChar(50)
+  email        String? @db.VarChar(50)
+  guilde       String? @db.VarChar(50)
+  id_user      Int     @id @unique @default(autoincrement())
+  team         team[]
 }
 
-model User {
-  id Int @id @default(autoincrement())
-  guilde String
-  email String
-  mdp String
-  role ROLE @default(DEVELOPER)
-  avatar String
-  date DateTime @default(now())
-  team Team @relation("teamHasUser",fields: [teamId],references:[id])
-  teamId Int
+model boss {
+  nom          String?     @db.VarChar(50)
+  element_boss String?     @db.VarChar(50)
+  point_de_vie Float?
+  niveau       Int?
+  palier       Int?
+  id_boss      Int         @id @unique @default(autoincrement())
+  combat       combat[]
+  participe    participe[]
 }
 
-model Team{
-  id Int @id @default(autoincrement())
-  nameTeam String
-  personnage String
-  score Int
-  date DateTime @default(now())
-  user User? @relation("teamHasUser")
-  raid Raid @relation(fields: [raidId],references: [id])
-  raidId Int
+model combat {
+  id_team    Int
+  id_boss    Int
+  degat_boss Float?
+  boss       boss   @relation(fields: [id_boss], references: [id_boss])
+  team       team   @relation(fields: [id_team], references: [id_team])
+
+  @@id([id_team, id_boss])
+  @@unique([id_team, id_boss], name: "combat_pk")
+  @@index([id_boss], name: "combat2_fk")
+  @@index([id_team], name: "combat_fk")
 }
 
-model Raid{
-  id Int @id @default(autoincrement())
-  name String
-  date DateTime @default(now())
-  boss Boss @relation("bossHasRaid",fields: [bossId],references: [id])
-  bossId Int
-  team Team? @relation()
+model participe {
+  id_raid Int
+  id_boss Int
+  boss    boss @relation(fields: [id_boss], references: [id_boss])
+  raid    raid @relation(fields: [id_raid], references: [id_raid])
+
+  @@id([id_raid, id_boss])
+  @@unique([id_raid, id_boss], name: "participe_pk")
+  @@index([id_boss], name: "participe2_fk")
+  @@index([id_raid], name: "participe_fk")
 }
 
-model Boss{
-  id Int @id @default(autoincrement())
-  name String
-  life Int
-  raid Raid? @relation("bossHasRaid")
+model raid {
+  date      DateTime?   @db.Date
+  nom       String?     @db.VarChar(50)
+  id_raid   Int         @id @unique @default(autoincrement())
+  participe participe[]
 }
 
-enum ROLE{
+model team {
+  personnage   String?  @db.VarChar(50)
+  degat_max    Float?
+  element_team String?  @db.VarChar(50)
+  id_team      Int      @id @unique
+  id_user      Int
+  USER         USER     @relation(fields: [id_user], references: [id_user])
+  combat       combat[]
+
+  @@index([id_user], name: "compose_fk")
+}
+
+enum ROLE {
   USER
   ADMIN
   DEVELOPER
