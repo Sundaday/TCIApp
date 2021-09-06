@@ -41,9 +41,9 @@ export default function Home() {
                             <p> Users + Position + Boss + Pv + SortBy()</p>
                     </a>
                 </Link>
-                <Link href='/raid'>
+                <Link href='/placement'>
                     <a className = {styles.card}>
-                        <h2> Stats Raid &rarr; </h2> 
+                        <h2> Placements &rarr; </h2> 
                             <p> Users + teams + scores + dateTime</p>
                     </a>
                 </Link>
