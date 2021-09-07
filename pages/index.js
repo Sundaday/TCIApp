@@ -41,6 +41,13 @@ export default function Home() {
                             <p> Users + Position + Boss + Pv + SortBy()</p>
                     </a>
                 </Link>
+                <Link href='/formulaire'>
+                    <a className={styles.card}>
+                        <h2> Formulaire &rarr; </h2>
+                        <p> Users + Position + Boss + Pv + SortBy()</p>
+                    </a>
+                </Link>
+                
                 <Link href='/placement'>
                     <a className = {styles.card}>
                         <h2> Placements &rarr; </h2> 
