@@ -1,12 +1,12 @@
 import Prisma from "@prisma/client"
+import prisma from "../lib/prisma.js"
 import Head from "next/head"
 import { useState } from "react"
-import { Container,Form,Header} from "semantic-ui-react"
-import styles from "../styles/Home.module.css"
-import utils from "../utils/fetcher.js"
+import { Container, Form, Header} from "semantic-ui-react"
+import fetcher from "../utils/fetcher.js"
 
 export async function getServerSideProps(){
-   const users = await prisma.user.findMany()
+    const users = await prisma.user.findMAny();
    return{
        props:{initialUsers:users},
     }
@@ -14,13 +14,10 @@ export async function getServerSideProps(){
 
 function formulaire({initialUsers}){
     const [users, setUsers] = useState<Prisma.UserUncheckedCreateInput>(initialUsers)
-    const [pseudo, setPseudo] = useState("")
-    const [mot_de_passe, setMot_de_passe] = useState("")
-    const [email, setEmail] = useState("")
-    const [guilde, setGuilde] = useState("")
-    const [element_team, setElement_team] = useState("")
-    const [personnage, setPersonnage] = useState("")
-    const [degat_boss, setDegat_boss] = useState("")
+    const [pseudo, setPseudo] = useState<Prisma.UserUncheckedCreateInput>("")
+    const [element_team, setElement_team] = useState<Prisma.UserUncheckedCreateInput>("")
+    const [personnage, setPersonnage] = useState<Prisma.UserUncheckedCreateInput>("")
+    const [degat_boss, setDegat_boss] = useState<Prisma.UserUncheckedCreateInput>("")
 
     return (
         <>
@@ -32,22 +29,11 @@ function formulaire({initialUsers}){
                 C'est ici qu'on renseigne ses scores !
             </Header>
             <Form onSubmit={async () => {
-                const body:Prisma.USERCreateInput{ 
-                    pseudo,
-                    mot_de_passe,
-                    email,
-                    guilde,
-                    element_team,
-                    personnage,
-                    degat_boss,
-                    element_team,
-                    personnage,
-                    degat_boss,
-                    element_team,
-                    personnage,
-                    degat_boss,
-                
-                }
+                const body =
+                    pseudo
+                    element_team
+                    personnage
+                    degat_boss
                 
                 await fetcher("/api/create", { user: body }),
                 await setUsers([...users,body]),
