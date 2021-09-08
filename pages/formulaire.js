@@ -1,7 +1,8 @@
 import prisma from "../lib/prisma.js"
 import Head from "next/head"
 import { useState } from "react"
-import { Container, Form, Header} from "semantic-ui-react"
+import { Container, Form, Header } from "semantic-ui-react"
+import 'semantic-ui-css/semantic.min.css';
 import fetcher from "../utils/fetcher.js"
 
 export async function getServerSideProps(){
@@ -21,7 +22,11 @@ function formulaire({initialUsers}){
     return (
         <>
         <Head>
-            <h1>Page où se trouvera le formulaire</h1>
+            <title>formulaire Equilibrage</title>
+            <link 
+            rel="stylesheet" 
+            href="/logotci.png" 
+            />
         </Head>
         <Container style ={{margin:20}}>
             <Header as="h3">
@@ -44,34 +49,36 @@ function formulaire({initialUsers}){
                 setPersonnage(""),
                 setDegat_boss("")
 
-            }}></Form> 
+            }}> 
             <Form.Group widths="equal">
-                <Form.Input
-                    fluid label="Pseudo"
+                <Form.Input 
+                    fluid 
+                    label="Pseudo IG"
                     placeholder="Pseudo"
                     value={pseudo}
                     onChange={(e) => setPseudo(e.target.value)}
                 />
                 <Form.Input 
-                    fluid label="element team" 
-                    placeholder="element team" 
+                    fluid label="Elements team" 
+                    placeholder="elements team" 
                     value={element_team}
                     onChange={(e) => setElement_team(e.target.value)}
-                />
-                <Form.Input
+                /> 
+                <Form.Input 
                     fluid label="Personnage"
                     placeholder="Personnage"
                     value={personnage}
                     onChange={(e) => setPersonnage(e.target.value)}
                 />
-                <Form.Input
-                    fluid label="degat boss"
+                <Form.Input 
+                    fluid label="Degat boss"
                     placeholder="degat boss"
                     value={degat_boss}
                     onChange={(e) => setDegat_boss(e.target.value)}
                 />
-
-            </Form.Group>
+                </Form.Group>
+                <Form.Button>Submit</Form.Button>
+            </Form>
         </Container>
         </>
     )
