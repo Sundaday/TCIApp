@@ -1,23 +1,24 @@
-import Prisma from "@prisma/client"
 import prisma from "../lib/prisma.js"
 import Head from "next/head"
 import { useState } from "react"
 import { Container, Form, Header} from "semantic-ui-react"
 import fetcher from "../utils/fetcher.js"
 
+console.log(prisma.USER)
+
 export async function getServerSideProps(){
-    const users = await prisma.user.findMAny();
+    const users = await prisma.uSER.findMany();
    return{
        props:{initialUsers:users},
     }
 }
 
 function formulaire({initialUsers}){
-    const [users, setUsers] = useState<Prisma.UserUncheckedCreateInput>(initialUsers)
-    const [pseudo, setPseudo] = useState<Prisma.UserUncheckedCreateInput>("")
-    const [element_team, setElement_team] = useState<Prisma.UserUncheckedCreateInput>("")
-    const [personnage, setPersonnage] = useState<Prisma.UserUncheckedCreateInput>("")
-    const [degat_boss, setDegat_boss] = useState<Prisma.UserUncheckedCreateInput>("")
+    const [users, setUsers] = useState(initialUsers)
+    const [pseudo, setPseudo] = useState("")
+    const [element_team, setElement_team] = useState("")
+    const [personnage, setPersonnage] = useState("")
+    const [degat_boss, setDegat_boss] = useState("")
 
     return (
         <>
@@ -45,8 +46,34 @@ function formulaire({initialUsers}){
                 setPersonnage(""),
                 setDegat_boss("")
 
-            }}></Form>
-            
+            }}></Form> 
+            <Form.Group widths="equal">
+                <Form.Input
+                    fluid label="Pseudo"
+                    placeholder="Pseudo"
+                    value={pseudo}
+                    onChange={(e) => setPseudo(e.target.value)}
+                />
+                <Form.Input 
+                    fluid label="element team" 
+                    placeholder="element team" 
+                    value={element_team}
+                    onChange={(e) => setElement_team(e.target.value)}
+                />
+                <Form.Input
+                    fluid label="Personnage"
+                    placeholder="Personnage"
+                    value={personnage}
+                    onChange={(e) => setPersonnage(e.target.value)}
+                />
+                <Form.Input
+                    fluid label="degat boss"
+                    placeholder="degat boss"
+                    value={degat_boss}
+                    onChange={(e) => setDegat_boss(e.target.value)}
+                />
+
+            </Form.Group>
         </Container>
         </>
     )

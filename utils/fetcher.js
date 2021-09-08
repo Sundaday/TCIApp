@@ -1,5 +1,5 @@
 export const fetcher = (url, data) =>
-fetch(location.origin + url,{
+fetch(window.location.origin + url,{
     method: data ? "POST" : "GET",
     credentials: "include",
     headers: {
