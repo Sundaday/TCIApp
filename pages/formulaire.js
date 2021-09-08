@@ -3,7 +3,8 @@ import Head from "next/head"
 import { useState } from "react"
 import { Container, Form, Header } from "semantic-ui-react"
 import 'semantic-ui-css/semantic.min.css';
-import fetcher from "../utils/fetcher.js"
+import { fetcher } from "../utils/fetcher.js"
+import React from 'react'
 
 export async function getServerSideProps(){
     const users = await prisma.uSER.findMany();
@@ -15,9 +16,9 @@ export async function getServerSideProps(){
 function formulaire({initialUsers}){
     const [users, setUsers] = useState(initialUsers)
     const [pseudo, setPseudo] = useState("")
-    const [element_team, setElement_team] = useState("")
-    const [personnage, setPersonnage] = useState("")
-    const [degat_boss, setDegat_boss] = useState("")
+    const [mot_de_passe, setMot_de_passe] = useState("")
+    const [email, setEmail] = useState("")
+    const [guilde, setGuilde] = useState("")
 
     return (
         <>
@@ -33,21 +34,19 @@ function formulaire({initialUsers}){
                 C'est ici qu'on renseigne ses scores !
             </Header>
             <Form onSubmit={async () => {
-                const body =
-                    pseudo
-                    element_team
-                    personnage
-                    degat_boss
-                
+                const body = {
+                    pseudo,
+                    mot_de_passe,
+                    email,
+                    guilde
+                }
+                    
                 await fetcher("/api/create", { user: body }),
                 await setUsers([...users,body]),
                 setPseudo(""),
                 setMot_de_passe(""),
                 setEmail(""),
-                setGuilde(""),
-                setElement_team(""),
-                setPersonnage(""),
-                setDegat_boss("")
+                setGuilde("")
 
             }}> 
             <Form.Group widths="equal">
@@ -59,22 +58,22 @@ function formulaire({initialUsers}){
                     onChange={(e) => setPseudo(e.target.value)}
                 />
                 <Form.Input 
-                    fluid label="Elements team" 
-                    placeholder="elements team" 
-                    value={element_team}
-                    onChange={(e) => setElement_team(e.target.value)}
+                    fluid label="Mot de passe" 
+                    placeholder="Mot de passe"
+                    value={mot_de_passe}
+                    onChange={(e) => setMot_de_passe(e.target.value)}
                 /> 
                 <Form.Input 
-                    fluid label="Personnage"
-                    placeholder="Personnage"
-                    value={personnage}
-                    onChange={(e) => setPersonnage(e.target.value)}
+                    fluid label="Email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <Form.Input 
-                    fluid label="Degat boss"
-                    placeholder="degat boss"
-                    value={degat_boss}
-                    onChange={(e) => setDegat_boss(e.target.value)}
+                    fluid label="Guilde"
+                    placeholder="Guilde"
+                    value={guilde}
+                    onChange={(e) => setGuilde(e.target.value)}
                 />
                 </Form.Group>
                 <Form.Button>Submit</Form.Button>
