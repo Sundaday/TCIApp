@@ -4,8 +4,6 @@ import { useState } from "react"
 import { Container, Form, Header} from "semantic-ui-react"
 import fetcher from "../utils/fetcher.js"
 
-console.log(prisma.USER)
-
 export async function getServerSideProps(){
     const users = await prisma.uSER.findMany();
    return{
