@@ -8,9 +8,9 @@ export default async (req, res) => {
     }
 
     try {
-        const { user } = req.body;
-        const savedUser = await prisma.uSER.create({ data: user })
-        res.status(200).json({ savedUser })
+        const { user } = req.body
+        const savedUser = await prisma.uSER.create({data:user})
+        res.status(200).json({ savedUser})
     } catch (error) {
         res.status(400).json({ message: 'Something went wrong' })
     }

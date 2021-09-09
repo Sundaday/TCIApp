@@ -9,12 +9,12 @@ import React from 'react'
 export async function getServerSideProps(){
     const users = await prisma.uSER.findMany();
    return{
-       props:{initialUsers:users},
+       props: { initialUsers: users }, 
     }
 }
 
-function formulaire({initialUsers}){
-    const [users, setUsers] = useState(initialUsers)
+function formulaire(){
+    const [users, setUsers] = useState("")
     const [pseudo, setPseudo] = useState("")
     const [mot_de_passe, setMot_de_passe] = useState("")
     const [email, setEmail] = useState("")
@@ -25,8 +25,8 @@ function formulaire({initialUsers}){
         <Head>
             <title>formulaire Equilibrage</title>
             <link 
-            rel="stylesheet" 
-            href="/logotci.png" 
+                rel="stylesheet" 
+                href="/logotci.png" 
             />
         </Head>
         <Container style ={{margin:20}}>
@@ -34,7 +34,7 @@ function formulaire({initialUsers}){
                 C'est ici qu'on renseigne ses scores !
             </Header>
             <Form onSubmit={async () => {
-                const body = {
+                const body ={
                     pseudo,
                     mot_de_passe,
                     email,
@@ -42,7 +42,7 @@ function formulaire({initialUsers}){
                 }
                     
                 await fetcher("/api/create", { user: body }),
-                await setUsers([...users,body]),
+                await setUsers([...users,body]),              
                 setPseudo(""),
                 setMot_de_passe(""),
                 setEmail(""),
