@@ -14,15 +14,12 @@ export default async (req, res) => {
         
         const savedUser = await prisma.user.create({
             data: {
-                pseudo:user,
-                mot_de_passe:user,
-                email:user,
-                guilde:user,
+                ,
                 team: {
                     create: {
-                        personnage:team,
-                        degat_max:team,
-                        element_team:team
+                        personnage:'personnage',
+                        degat_max:123.2323,    
+                        element_team:"prout"
                     },
                 },
             },

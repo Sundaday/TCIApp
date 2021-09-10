@@ -29,14 +29,14 @@ function formulaire() {
                     C'est ici qu'on renseigne ses scores !
             </Header>
                 <Form onSubmit={async () => {
-                    const body = {
+                    const bodyUser = {
                         pseudo,
                         mot_de_passe,
                         email,
                         guilde
                     }
 
-                    await fetcher("/api/create", { user: body }),
+                    await fetcher("/api/create",bodyUser),
                         await setUsers([...users, body]),
                         setPseudo(""),
                         setMot_de_passe(""),
@@ -74,15 +74,15 @@ function formulaire() {
                     <Form.Button>Submit</Form.Button>
                 </Form>
                 <Form onSubmit={async () => {
-                    const body = {
+                    const bodyTeam = {
                         personnage,
                         degat_max,
                         element_team
 
                     }
 
-                    await fetcher("/api/create", { team: body }),
-                        await setTeams([...teams, body]),
+                    await fetcher("/api/create",bodyTeam),
+                        await setTeams([...teams,body]),
                         setPersonnage(""),
                         setDegat_max(""),
                         setElement_team("")

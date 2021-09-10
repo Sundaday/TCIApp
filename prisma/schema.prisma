@@ -43,14 +43,14 @@ model Participe {
 }
 
 model Raid {
-  id   Int         @id @default(autoincrement())
+  id        Int         @id @default(autoincrement())
   date      DateTime?   @db.Date
   nom       String?     @db.VarChar(50)
   participe Participe[]
 }
 
 model Team {
-  id      Int      @id @default(autoincrement())
+  id           Int      @id @default(autoincrement())
   personnage   String?  @db.VarChar(50)
   degat_max    Float?
   element_team String?  @db.VarChar(50)
