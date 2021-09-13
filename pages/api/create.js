@@ -8,25 +8,35 @@ export default async (req, res) => {
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method not allowed' });
     }
-
-    
-        const { user } = req.body
+        const { 
+            pseudo,
+            mot_de_passe,
+            email,
+            guilde,
+            personnage,
+            degat_max,
+            element_team 
+        } = req.body
+        
         
         const savedUser = await prisma.user.create({
             data: {
-                ,
-                team: {
-                    create: {
-                        personnage:'personnage',
-                        degat_max:123.2323,    
-                        element_team:"prout"
+                pseudo,
+                mot_de_passe,
+                email,
+                guilde,
+                    team: {
+                        create: {
+                            personnage,
+                            degat_max,
+                            element_team
+                        },
                     },
                 },
-            },
-            include: {
-                team: true,
-            },
-        })
+                include: {
+                    team: true,
+                },
+            })
         console.log(savedUser)
         res.status(200).json({ savedUser })
     

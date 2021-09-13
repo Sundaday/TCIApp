@@ -27,21 +27,36 @@ function formulaire() {
             <Container style={{ margin: 20 }}>
                 <Header as="h3">
                     C'est ici qu'on renseigne ses scores !
-            </Header>
+                </Header>
                 <Form onSubmit={async () => {
-                    const bodyUser = {
+                    
                         pseudo,
                         mot_de_passe,
                         email,
-                        guilde
-                    }
+                        guilde,
+                        personnage,
+                        degat_max,
+                        element_team
 
-                    await fetcher("/api/create",bodyUser),
-                        await setUsers([...users, body]),
+                    
+                    await fetcher("/api/create",{ 
+                        pseudo: pseudo,
+                        mot_de_passe:mot_de_passe,
+                        email:email,
+                        guilde:guilde,
+                        personnage:personnage,
+                        degat_max:degat_max,
+                        element_team:element_team   
+                    }),
+                    await setUsers([...users, pseudo, mot_de_passe, email,guilde]),
+                    await setTeams([...teams, personnage, degat_max, element_team]),
                         setPseudo(""),
                         setMot_de_passe(""),
                         setEmail(""),
-                        setGuilde("")
+                        setGuilde(""),
+                        setPersonnage(""),
+                        setDegat_max(""),
+                        setElement_team("")
 
                 }}>
                     <Form.Group widths="equal">
@@ -70,25 +85,6 @@ function formulaire() {
                             value={guilde}
                             onChange={(e) => setGuilde(e.target.value)}
                         />
-                    </Form.Group>
-                    <Form.Button>Submit</Form.Button>
-                </Form>
-                <Form onSubmit={async () => {
-                    const bodyTeam = {
-                        personnage,
-                        degat_max,
-                        element_team
-
-                    }
-
-                    await fetcher("/api/create",bodyTeam),
-                        await setTeams([...teams,body]),
-                        setPersonnage(""),
-                        setDegat_max(""),
-                        setElement_team("")
-
-                }}>
-                    <Form.Group widths="equal">
                         <Form.Input
                             fluid
                             label="Personnage"
@@ -100,7 +96,7 @@ function formulaire() {
                             fluid label="degat max"
                             placeholder="degat max"
                             value={degat_max}
-                            onChange={(e) => setDegat_max(e.target.value)}
+                            onChange={(e) => setDegat_max(parseFloat(e.target.value))}
                         />
                         <Form.Input
                             fluid label="element team"
