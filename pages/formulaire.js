@@ -13,8 +13,9 @@ function formulaire() {
     const [guilde, setGuilde] = useState("")
     const [teams, setTeams] = useState("")
     const [personnage, setPersonnage] = useState("")
-    const [degat_max, setDegat_max] = useState("")
+    const [degat_max, setDegat_max] = useState(0)
     const [element_team, setElement_team] = useState("")
+    var patt = /^(\d*)([,.]\d{0,2})?$/
     return (
         <>
             <Head>
@@ -55,7 +56,7 @@ function formulaire() {
                         setEmail(""),
                         setGuilde(""),
                         setPersonnage(""),
-                        setDegat_max(""),
+                        setDegat_max(0),
                         setElement_team("")
 
                 }}>

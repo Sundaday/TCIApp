@@ -2,9 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
-import { fetcher } from '../utils/fetcher.js'
-import { Container, Form, Header } from 'semantic-ui-react'
-
 
 export default function Home() {
     return ( 
