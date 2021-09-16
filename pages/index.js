@@ -19,9 +19,6 @@ export default function Home() {
             <h1 className = {styles.title}>
                 Bienvenue dans l'alliance{' '}TCI
             </h1>
-                <p className = {styles.description}>Edit by{' '}
-                    <code className = {styles.code}>Sundaday</code>
-                </p>
             <div className = {styles.grid}>
                 <Link href='/imperatrice'>
                     <a className = {styles.card}>

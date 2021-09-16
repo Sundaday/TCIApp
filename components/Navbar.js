@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import Image from 'next/image'
+
 
 const Navbar = () =>{
     return (
@@ -6,10 +8,14 @@ const Navbar = () =>{
             <div className="logo">
                 <h1>
                     <Link href='/'>
+                        
                         TCIapp
                     </Link>
                 </h1>
-            </div>            
+            </div>         
+            <div className="banner">
+                <Image src="/logotci.png" width={200} height={200}/>
+            </div>   
         </nav>
     )
 }

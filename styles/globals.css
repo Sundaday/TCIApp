@@ -28,13 +28,18 @@ nav .logo {
   margin-right: auto;
 }
 footer {
-  align-items: flex-end;
-  image-rendering: auto;
   display: block;
   text-align: center;
   padding: 30px 0;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 60px;
   color: #777;
-  border-top: 1px solid #eaeaea;
+  border-top: 3px solid #eaeaea;
+}
+
+.banner{
+  text-align: center;
+  display: block;
 }
 
