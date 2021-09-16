@@ -40,6 +40,10 @@ footer {
 
 .banner{
   text-align: center;
-  display: block;
+  
+}
+
+.homeButton{
+text-align: left;
 }
 

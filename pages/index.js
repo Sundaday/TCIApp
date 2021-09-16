@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
-import { signIn, signOut, useSession} from "next-auth/client"
 
 export default function Home() {
-    const [session, loading] = useSession();
 
     return ( 
         <div className = {styles.container} >  
@@ -52,7 +50,7 @@ export default function Home() {
                     </a>
                 </Link>
             </div> 
-            <iframe src="https://discord.com/widget?id=758029805055639782&theme=dark" width="350" height="250" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+            <iframe src="https://discord.com/widget?id=758029805055639782&theme=dark" width="350" height="450" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         </main>
     </div>
     )
