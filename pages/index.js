@@ -50,7 +50,7 @@ export default function Home() {
                     </a>
                 </Link>
             </div> 
-            <iframe src="https://discord.com/widget?id=758029805055639782&theme=dark" width="350" height="450" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+            <iframe src="https://discord.com/widget?id=758029805055639782&theme=dark" width="350" height="400" allowtransparency="true" frameBorder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         </main>
     </div>
     )

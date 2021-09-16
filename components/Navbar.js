@@ -1,11 +1,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import {  signIn, signOut, useSession } from "next-auth/client"
+import { Container, Form, Header } from "semantic-ui-react"
+import 'semantic-ui-css/semantic.min.css';
+import { signIn, signOut, useSession } from "next-auth/client"
 
 const Navbar = () =>{
     const [session, loading] = useSession();
     return (
         <nav>
+            <Container>
             <h1 className="homeButton">
                 <Link href='/'>
                     TCIapp
@@ -27,6 +30,7 @@ const Navbar = () =>{
                 <button onClick={signOut}>Deconnexion</button>
                 </>    
             )}
+            </Container>
         </nav>
     )
 }
