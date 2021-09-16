@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { signin, signIn, signOut, useSession } from "next-auth/client"
+import {  signIn, signOut, useSession } from "next-auth/client"
 
 const Navbar = () =>{
     const [session, loading] = useSession();
@@ -19,9 +19,13 @@ const Navbar = () =>{
                 />
             </div>   
             {!session?(
-                <button onClick={signin}>Connexion</button>
+                <button onClick={() => signIn("discord")}>Connexion</button>
                 ) : (
+                <>
+                <span>{session.user.name}</span>
+                    {session.user.image && <img src={session.user.image} style={{ width:'50px', borderRadius:'100%'}}/>}
                 <button onClick={signOut}>Deconnexion</button>
+                </>    
             )}
         </nav>
     )
