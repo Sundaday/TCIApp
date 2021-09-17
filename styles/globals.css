@@ -17,8 +17,7 @@ nav {
   margin: 10px auto 8px;
   padding: 10px 0;
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: space-between;
   border-bottom: 3px solid #ddd;
 }
 nav a {
@@ -38,12 +37,16 @@ footer {
   border-top: 3px solid #eaeaea;
 }
 
-.banner{
-  text-align: center;
-  
-}
 
 .homeButton{
-text-align: left;
+  justify-content: left;
 }
 
+.banner{
+  position: center;
+}
+
+.logButton{
+  display:flex;
+  align-items: center;
+}
