@@ -13,6 +13,7 @@ model User {
   mot_de_passe String? @db.VarChar(50)
   email        String? @db.VarChar(50)
   guilde       String? @db.VarChar(50)
+  role         ROLE    @default(DEVELOPER)
   team         Team[]
 }
 

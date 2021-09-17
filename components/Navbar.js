@@ -20,6 +20,7 @@ const Navbar = () =>{
                 />
             </div>   
             <div className="LogButton">
+                <h4>Vous êtes actuellement {session ? 'connecté' : 'deconnecté'}</h4>
                 {!session?(
                     <button className="bLogSignIn" class="ui  primary button" onClick={() => signIn("discord")}>Connexion</button>
                         ) : (
