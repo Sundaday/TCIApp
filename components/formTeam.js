@@ -28,7 +28,6 @@ function formTeam() {
                     C'est ici qu'on renseigne ses scores !
                 </Header>
                 <Form onSubmit={async () => {
-                    
                         pseudo,
                         guilde,
                         personnage,
@@ -51,41 +50,41 @@ function formTeam() {
                         setDegat_max(0),
                         setElement_team("")
 
-                }}>
-                    <Form.Group widths="equal">
-                        <Form.Input
-                            fluid
-                            label="Pseudo IG"
-                            placeholder="Pseudo"
-                            value={pseudo}
-                            onChange={(e) => setPseudo(e.target.value)}
-                        />
-                        <Form.Input
-                            fluid label="Guilde"
-                            placeholder="Guilde"
-                            value={guilde}
-                            onChange={(e) => setGuilde(e.target.value)}
-                        />
-                        <Form.Input
-                            fluid
-                            label="Personnage"
-                            placeholder="Personnage"
-                            value={personnage}
-                            onChange={(e) => setPersonnage(e.target.value)}
-                        />
-                        <Form.Input
-                            fluid label="degat max"
-                            placeholder="degat max"
-                            value={degat_max}
-                            onChange={(e) => setDegat_max(parseFloat(e.target.value))}
-                        />
-                        <Form.Input
-                            fluid label="element team"
-                            placeholder="element"
-                            value={element_team}
-                            onChange={(e) => setElement_team(e.target.value)}
-                        />
-                    </Form.Group>
+                    }}>
+                        <Form.Group widths="equal">
+                            <Form.Input
+                                fluid
+                                label="Pseudo IG"
+                                placeholder="Pseudo"
+                                value={pseudo}
+                                onChange={(e) => setPseudo(e.target.value)}
+                            />
+                            <Form.Input
+                                fluid label="Guilde"
+                                placeholder="Guilde"
+                                value={guilde}
+                                onChange={(e) => setGuilde(e.target.value)}
+                            />
+                            <Form.Input
+                                fluid label="element team"
+                                placeholder="element"
+                                value={element_team}
+                                onChange={(e) => setElement_team(e.target.value)}
+                            />
+                            <Form.Input
+                                fluid
+                                label="Personnage"
+                                placeholder="Personnage"
+                                value={personnage}
+                                onChange={(e) => setPersonnage(e.target.value)}
+                            />
+                            <Form.Input
+                                fluid label="degat max"
+                                placeholder="degat max"
+                                value={degat_max}
+                                onChange={(e) => setDegat_max(parseFloat(e.target.value))}
+                            />
+                        </Form.Group>
                     <Form.Button>Submit</Form.Button>
                 </Form>
             </Container>
