@@ -6,7 +6,7 @@ import { fetcher } from "../utils/fetcher.js"
 import React from 'react'
 
 
-function form() {
+function formTeam() {
     const [users, setUsers] = useState("")
     const [pseudo, setPseudo] = useState("")
     const [guilde, setGuilde] = useState("")
@@ -36,7 +36,7 @@ function form() {
                         element_team
 
                     
-                    await fetcher("/api/create",{ 
+                    await fetcher("/api/createTeam",{ 
                         pseudo: pseudo,
                         guilde:guilde,
                         personnage:personnage,
@@ -93,4 +93,4 @@ function form() {
     )
 }
 
-export default form
+export default formTeam

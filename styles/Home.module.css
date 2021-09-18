@@ -102,3 +102,9 @@
     flex-direction:  row;
   }
 }
+
+.banner{
+  display: flex;
+  justify-content: center; 
+  position: center;
+}

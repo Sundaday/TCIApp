@@ -42,10 +42,6 @@ footer {
   justify-content: left;
 }
 
-.banner{
-  position: center;
-}
-
 .logButton{
   display:flex;
   align-items: center;

@@ -12,13 +12,6 @@ const Navbar = () =>{
                     TCIapp
                 </Link>
             </h1>      
-            <div className="banner">
-                <Image 
-                src="/logotci.png" 
-                width={200} 
-                height={200}
-                />
-            </div>   
         </nav>
     )
 }

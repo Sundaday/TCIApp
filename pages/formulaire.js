@@ -1,10 +1,10 @@
-import Form from '../components/Form'
+import FormTeam from '../components/formTeam'
 
 function formulaire(){
     return(
         <>
             <h1>Page où se trouvera l'équilibrage</h1>
-            <Form/>
+            <FormTeam/>
         </>
     )
 }
