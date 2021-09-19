@@ -96,13 +96,6 @@
   margin-left: 0.5rem;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction:  row;
-  }
-}
-
 .banner{
   display: flex;
   justify-content: center; 
@@ -111,7 +104,13 @@
 
 .formForm{
   align-items: center;
-  justify-content: center;
-  
-  
+  justify-content: center;  
 } 
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction:  row;
+  }
+}
+

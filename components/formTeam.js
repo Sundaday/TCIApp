@@ -1,10 +1,10 @@
 import Head from "next/head"
+import Link from 'next/link'
 import { useState } from "react"
 import { Container, Form, Header } from "semantic-ui-react"
 import 'semantic-ui-css/semantic.min.css';
 import { fetcher } from "../utils/fetcher.js"
 import React from 'react'
-
 
 function formTeam() {
     const [users, setUsers] = useState("")
@@ -34,7 +34,6 @@ function formTeam() {
                         degat_max,
                         element_team
 
-                    
                     await fetcher("/api/createTeam",{ 
                         pseudo: pseudo,
                         guilde:guilde,

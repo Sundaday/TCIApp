@@ -1,12 +1,11 @@
 import { getSession } from '@auth0/nextjs-auth0'
-import { PrismaClient } from '@prisma/client'
+import prisma from '../../lib/prisma'
 
 export default async (req, res) => {
     const { teamId } = req.query
     const { user } = await getSession (req, res)
 
     try {
-        const prisma = new PrismaClient()
 
         await prisma.user.update({
             where:{

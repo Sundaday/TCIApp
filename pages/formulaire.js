@@ -1,10 +1,9 @@
 import FormTeam from '../components/formTeam'
-import { PrismaClient } from '@prisma/client'
-import { Divider, Header, Tab, Table } from "semantic-ui-react"
-import styles from '../styles/Home.module.css'
+import prisma from '../lib/prisma'
+import { Divider, Header, Table } from "semantic-ui-react"
 
 export async function getServerSideProps() {
-    const prisma = new PrismaClient();
+    
     const users = await prisma.user.findMany({
         include:{
             team:{
@@ -19,11 +18,11 @@ export async function getServerSideProps() {
     const team = users[0].team[0];
     console.dir(team.degat_max)
     return {
-        props: {users, team}
+        props: {users}
     }
 }
 
-function formulaire({users, team}){
+function formulaire({users}){
     return(
         <>
             <FormTeam/>
@@ -58,21 +57,21 @@ function formulaire({users, team}){
                         <Table.Cell>
                             <Header>
                                 <Header.Content>
-                                    {users.team.personnage}
+                                    {users.element_team}
                                 </Header.Content>
                             </Header>
                         </Table.Cell>
                         <Table.Cell>
                             <Header>
                                 <Header.Content>
-                                    {users.team.personnage}
+                                    {users.personnage}
                                 </Header.Content>
                             </Header>
                         </Table.Cell>
                         <Table.Cell>
                             <Header>
                                 <Header.Content>
-                                    {users.team.degat_max}
+                                    {users.degat_max}
                                 </Header.Content>
                             </Header>
                         </Table.Cell>

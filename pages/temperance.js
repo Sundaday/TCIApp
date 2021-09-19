@@ -1,9 +1,9 @@
-import { PrismaClient } from '@prisma/client'
+import prisma from '../lib/prisma'
 import { Container, Divider, Header, Tab, Table } from "semantic-ui-react"
 import styles from '../styles/Home.module.css'
 
 export async function getServerSideProps() {
-    const prisma = new PrismaClient();
+    
     const users = await prisma.user.findMany()
     const teams = await prisma.team.findMany()
     return {

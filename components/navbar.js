@@ -1,7 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import 'semantic-ui-css/semantic.min.css';
-
 
 const Navbar = () =>{
 
