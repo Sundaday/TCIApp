@@ -1,4 +1,3 @@
-import FormTeam from '../components/formTeam'
 import { PrismaClient } from '@prisma/client'
 import { Container, Divider, Header, Tab, Table } from "semantic-ui-react"
 import styles from '../styles/Home.module.css'
@@ -15,9 +14,14 @@ export async function getServerSideProps() {
 function temperance({ users, teams }) {
     return (
         <>
+            <header>
+                <h1>
+                    Guilde Tempérance
+                </h1>
+            </header>
             <Divider horizontal>Team</Divider>
-            <div className={styles.formForm}>
-                <Table basic="very" celled collapsing>
+            <Table basic="very" celled collapsing className={styles.formForm}>
+                <Table>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell>Pseudo</Table.HeaderCell>
@@ -26,25 +30,25 @@ function temperance({ users, teams }) {
                     </Table.Header>
                     <Table.Body>
                         {users.map((users, index) =>
-                            <Table.Row key={index}>
-                                <Table.Cell>
-                                    <Header>
-                                        <Header.Content>
-                                            {users.pseudo}
-                                        </Header.Content>
-                                    </Header>
-                                </Table.Cell>
-                                <Table.Cell>
-                                    <Header>
-                                        <Header.Content>
-                                            {users.guilde}
-                                        </Header.Content>
-                                    </Header>
-                                </Table.Cell>
-                            </Table.Row>)}
+                        <Table.Row key={index}>
+                            <Table.Cell>
+                                <Header>
+                                    <Header.Content>
+                                        {users.pseudo}
+                                    </Header.Content>
+                                </Header>
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Header>
+                                    <Header.Content>
+                                        {users.guilde}
+                                    </Header.Content>
+                                </Header>
+                            </Table.Cell>
+                        </Table.Row>)}
                     </Table.Body>
                 </Table>
-                <Table basic="very" celled collapsing>
+                <Table>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell>Element</Table.HeaderCell>
@@ -54,32 +58,32 @@ function temperance({ users, teams }) {
                     </Table.Header>
                     <Table.Body>
                         {teams.map((teams, index) =>
-                            <Table.Row key={index}>
-                                <Table.Cell>
-                                    <Header>
-                                        <Header.Content>
-                                            {teams.element_team}
-                                        </Header.Content>
-                                    </Header>
-                                </Table.Cell>
-                                <Table.Cell>
-                                    <Header>
-                                        <Header.Content>
-                                            {teams.personnage}
-                                        </Header.Content>
-                                    </Header>
-                                </Table.Cell>
-                                <Table.Cell>
-                                    <Header>
-                                        <Header.Content>
-                                            {teams.degat_max}
-                                        </Header.Content>
-                                    </Header>
-                                </Table.Cell>
-                            </Table.Row>)}
+                        <Table.Row key={index}>
+                            <Table.Cell>
+                                <Header>
+                                    <Header.Content>
+                                        {teams.element_team}
+                                    </Header.Content>
+                                </Header>
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Header>
+                                    <Header.Content>
+                                        {teams.personnage}
+                                    </Header.Content>
+                                </Header>
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Header>
+                                    <Header.Content>
+                                        {teams.degat_max}
+                                    </Header.Content>
+                                </Header>
+                            </Table.Cell>
+                        </Table.Row>)}
                     </Table.Body>
                 </Table>
-            </div>
+            </Table>
         </>
     )
 }

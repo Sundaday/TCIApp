@@ -8,7 +8,7 @@ export default async (req , res) => {
             return;
         }
         const team = await prisma.team.delete({
-            where:{id}
+            where:{ id }
         })
         res.status(200).json(team)
     } catch (error) {

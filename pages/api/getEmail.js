@@ -21,7 +21,7 @@ export default async (req, res) => {
             },
         })
 
-        await prisma.$disconnect()
+        
         
         res.status(200).end()
     }catch(e){
