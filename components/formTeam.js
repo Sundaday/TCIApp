@@ -1,5 +1,4 @@
 import Head from "next/head"
-import Link from 'next/link'
 import { useState } from "react"
 import { Container, Form, Header } from "semantic-ui-react"
 import 'semantic-ui-css/semantic.min.css';

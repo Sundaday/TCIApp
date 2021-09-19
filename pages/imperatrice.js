@@ -1,5 +1,4 @@
 import { Container, Divider, Header, Tab, Table } from "semantic-ui-react"
-import styles from '../styles/Home.module.css'
 import prisma from '../lib/prisma'
 
 export async function getServerSideProps() {
@@ -20,7 +19,7 @@ function imperatrice({ users, teams }) {
                 </h1>
             </header>
             <Divider horizontal>Team</Divider>
-            <Table basic="very" celled collapsing className={styles.formForm}>
+            <Table basic="very" celled collapsing>
                 <Table>
                     <Table.Header>
                         <Table.Row>
