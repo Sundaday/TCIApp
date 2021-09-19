@@ -17,8 +17,8 @@ function formulaire({users,teams}){
         <>
             <FormTeam/>
             <Divider horizontal>Team</Divider>
-            <div className={styles.formForm}>
-                <Table basic="very" celled collapsing>
+            <Table basic="very" celled collapsing className={styles.formForm}>
+                <Table>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell>Pseudo</Table.HeaderCell>
@@ -45,7 +45,7 @@ function formulaire({users,teams}){
                         </Table.Row>)}
                     </Table.Body>
                 </Table>
-                <Table basic="very" celled collapsing>
+                <Table>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell>Element</Table.HeaderCell>
@@ -80,7 +80,7 @@ function formulaire({users,teams}){
                         </Table.Row>)}
                     </Table.Body>
                 </Table>
-            </div>
+            </Table>
         </>
     )
 }

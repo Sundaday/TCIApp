@@ -110,10 +110,14 @@
 }
 
 .formForm{
-        display: flex;
-        flex-wrap: wrap;
+  display: flex;
+  align-items: baseline; 
+  justify-content: center;
+        
+        
     }
+    
     .formForm>* {
-        flex: 1 1 160px;
+        flex: 1 1 170px;
     }
 
