@@ -1,7 +1,6 @@
 .container {
   min-height: 100vh;
   padding: 0 0.5rem;
-  
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -9,28 +8,12 @@
 }
 
 .main {
-  padding: 5rem 0;
+  padding: 1rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: normal;
   align-items: center;
-}
-
-.footer {
-  width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
 }
 
 .title a {
@@ -84,7 +67,7 @@
   text-align: left;
   color: inherit;
   text-decoration: none;
-  border: 1px solid #eaeaea;
+  border: 2px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 45%;
@@ -113,9 +96,21 @@
   margin-left: 0.5rem;
 }
 
+.banner{
+  display: flex;
+  justify-content: center; 
+  position: center;
+}
+
+.formForm{
+  align-items: center;
+  justify-content: center;  
+} 
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
-    flex-direction: column;
+    flex-direction:  row;
   }
 }
+

@@ -1,69 +1,85 @@
-import Prisma from "@prisma/client"
-import Head from "next/head"
-import { useState } from "react"
-import { Container,Form,Header} from "semantic-ui-react"
-import styles from "../styles/Home.module.css"
-import utils from "../utils/fetcher.js"
+import FormTeam from '../components/formTeam'
+import prisma from '../lib/prisma'
+import { Divider, Header, Table } from "semantic-ui-react"
 
-export async function getServerSideProps(){
-   const users = await prisma.user.findMany()
-   return{
-       props:{initialUsers:users},
+export async function getServerSideProps() {
+    
+    const users = await prisma.user.findMany({
+        include:{
+            team:{
+                select:{
+                    personnage:true,
+                    element_team:true,
+                    degat_max:true
+                }
+            }
+        }
+    })
+    const team = users[0].team[0];
+    console.dir(team.degat_max)
+    return {
+        props: {users}
     }
 }
 
-function formulaire({initialUsers}){
-    const [users, setUsers] = useState<Prisma.UserUncheckedCreateInput>(initialUsers)
-    const [pseudo, setPseudo] = useState("")
-    const [mot_de_passe, setMot_de_passe] = useState("")
-    const [email, setEmail] = useState("")
-    const [guilde, setGuilde] = useState("")
-    const [element_team, setElement_team] = useState("")
-    const [personnage, setPersonnage] = useState("")
-    const [degat_boss, setDegat_boss] = useState("")
-
-    return (
+function formulaire({users}){
+    return(
         <>
-        <Head>
-            <h1>Page où se trouvera le formulaire</h1>
-        </Head>
-        <Container style ={{margin:20}}>
-            <Header as="h3">
-                C'est ici qu'on renseigne ses scores !
-            </Header>
-            <Form onSubmit={async () => {
-                const body:Prisma.USERCreateInput{ 
-                    pseudo,
-                    mot_de_passe,
-                    email,
-                    guilde,
-                    element_team,
-                    personnage,
-                    degat_boss,
-                    element_team,
-                    personnage,
-                    degat_boss,
-                    element_team,
-                    personnage,
-                    degat_boss,
-                
-                }
-                
-                await fetcher("/api/create", { user: body }),
-                await setUsers([...users,body]),
-                setPseudo(""),
-                setMot_de_passe(""),
-                setEmail(""),
-                setGuilde(""),
-                setElement_team(""),
-                setPersonnage(""),
-                setDegat_boss("")
-
-            }}></Form>
-            
-        </Container>
+            <FormTeam/>
+            <Divider horizontal>Team</Divider>
+            <Table basic="very" celled collapsing >
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell>Pseudo</Table.HeaderCell>
+                        <Table.HeaderCell>Guilde</Table.HeaderCell>
+                        <Table.HeaderCell>Element</Table.HeaderCell>
+                        <Table.HeaderCell>Personnage</Table.HeaderCell>
+                        <Table.HeaderCell>Dégâts Max</Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                    {users.map((users, index) =>
+                    <Table.Row key={index}>
+                        <Table.Cell>
+                            <Header>
+                                <Header.Content>
+                                    {users.pseudo}
+                                </Header.Content>
+                            </Header>
+                        </Table.Cell>
+                        <Table.Cell>
+                            <Header>
+                                <Header.Content>
+                                    {users.guilde}
+                                </Header.Content>
+                            </Header>
+                        </Table.Cell>
+                        <Table.Cell>
+                            <Header>
+                                <Header.Content>
+                                    {users.element_team}
+                                </Header.Content>
+                            </Header>
+                        </Table.Cell>
+                        <Table.Cell>
+                            <Header>
+                                <Header.Content>
+                                    {users.personnage}
+                                </Header.Content>
+                            </Header>
+                        </Table.Cell>
+                        <Table.Cell>
+                            <Header>
+                                <Header.Content>
+                                    {users.degat_max}
+                                </Header.Content>
+                            </Header>
+                        </Table.Cell>
+                    </Table.Row>)}
+                </Table.Body>
+            </Table>
         </>
     )
 }
 
-export default formulaire
+export default formulaire;
