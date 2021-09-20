@@ -103,8 +103,10 @@
 }
 
 .formForm{
-  align-items: center;
-  justify-content: center;  
+  margin: 1rem;
+ display: flex;
+ justify-content: center;
+ position: center;
 } 
 
 @media (max-width: 600px) {
