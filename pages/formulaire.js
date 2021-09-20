@@ -1,6 +1,6 @@
 import FormTeam from '../components/formTeam'
 import prisma from '../lib/prisma'
-import { Divider, Table, Container } from "semantic-ui-react"
+import { Divider, Table } from "semantic-ui-react"
 import styles from '../styles/Home.module.css'
 
 

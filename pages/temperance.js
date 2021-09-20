@@ -1,7 +1,7 @@
 import FormTeam from '../components/formTeam'
 import prisma from '../lib/prisma'
 import { Divider, Table } from "semantic-ui-react"
-import Styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css'
 
 
 export async function getStaticProps() {
@@ -31,9 +31,10 @@ export async function getStaticProps() {
 function imperatrice({ users }) {
     return (
         <>
-            <h1 >Guilde Tempérance</h1>
+            <h1 className={styles.description}>Guilde Tempérance</h1>
             <Divider horizontal>Team</Divider>
-            <Table basic="very" celled collapsing className={Styles.formForm}>
+            <div className={styles.formForm}>
+            <Table basic="very" celled collapsing>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Pseudo</Table.HeaderCell>
@@ -66,6 +67,7 @@ function imperatrice({ users }) {
                     })}
                 </Table.Body>
             </Table>
+            </div>
         </>
     )
 }
