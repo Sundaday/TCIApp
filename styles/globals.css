@@ -24,7 +24,7 @@ nav a {
   margin-left: 12px;
 }
 nav .logo {
-  margin-right: auto;
+  margin-top: auto;
 }
 footer {
   display: block;
@@ -42,6 +42,6 @@ footer {
 }
 
 .logButton{
-  display:flex;
-  align-items: center;
+
+  
 }
