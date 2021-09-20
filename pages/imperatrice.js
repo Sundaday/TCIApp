@@ -29,7 +29,6 @@ export async function getStaticProps() {
     }
 }
 
-
 function imperatrice({ users }) {
     return (
         <>
