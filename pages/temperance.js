@@ -7,7 +7,9 @@ import styles from '../styles/Home.module.css'
 export async function getStaticProps() {
 
     const users = await prisma.user.findMany({
-       
+        where: {
+            guilde: 'Tempérance'
+        },
         include: {
             team: {
                 select: {
@@ -46,7 +48,7 @@ function imperatrice({ users }) {
                 </Table.Header>
                 <Table.Body>
                     {users.map((user, index) => {
-                        console.log('user', user)
+                        //console.log('user', user)
                         return (<Table.Row key={index}>
                             <Table.Cell>
                                 {user?.pseudo || '-'}

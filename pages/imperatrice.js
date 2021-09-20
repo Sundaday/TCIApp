@@ -6,7 +6,9 @@ import styles from '../styles/Home.module.css'
 export async function getStaticProps() {
 
     const users = await prisma.user.findMany({
-       
+       where:{
+           guilde:'Impératrice'
+       },
         include: {
             team: {
                 select: {
@@ -16,6 +18,7 @@ export async function getStaticProps() {
                 }
             }
         }
+
     })
     //const team = users[0].team[0];
     //console.dir(team.degat_max)
