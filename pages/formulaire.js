@@ -1,8 +1,10 @@
 import FormTeam from '../components/formTeam'
 import prisma from '../lib/prisma'
-import { Divider, Header, Table } from "semantic-ui-react"
+import { Divider, Table } from "semantic-ui-react"
+import styles from '../styles/Home.module.css'
 
-export async function getServerSideProps() {
+
+export async function getStaticProps() {
     
     const users = await prisma.user.findMany({
         include:{
@@ -15,19 +17,23 @@ export async function getServerSideProps() {
             }
         }
     })
-    const team = users[0].team[0];
-    console.dir(team.degat_max)
+    //const team = users[0].team[0];
+    //console.dir(team.degat_max)
+    //console.dir(users,{depth:null})
+    
     return {
         props: {users}
     }
 }
+
 
 function formulaire({users}){
     return(
         <>
             <FormTeam/>
             <Divider horizontal>Team</Divider>
-            <Table basic="very" celled collapsing >
+            <div className={styles.formForm}>
+            <Table basic="very" celled collapsing>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Pseudo</Table.HeaderCell>
@@ -38,46 +44,27 @@ function formulaire({users}){
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {users.map((users, index) =>
-                    <Table.Row key={index}>
+                    {users.map((user, index) => {
+                        return (<Table.Row key={index}>
                         <Table.Cell>
-                            <Header>
-                                <Header.Content>
-                                    {users.pseudo}
-                                </Header.Content>
-                            </Header>
+                            {user?.pseudo || '-'}
                         </Table.Cell>
                         <Table.Cell>
-                            <Header>
-                                <Header.Content>
-                                    {users.guilde}
-                                </Header.Content>
-                            </Header>
+                            {user?.guilde || '-'}
                         </Table.Cell>
                         <Table.Cell>
-                            <Header>
-                                <Header.Content>
-                                    {users.element_team}
-                                </Header.Content>
-                            </Header>
+                            {user?.team[0].element_team || '-'}
                         </Table.Cell>
                         <Table.Cell>
-                            <Header>
-                                <Header.Content>
-                                    {users.personnage}
-                                </Header.Content>
-                            </Header>
+                            {user?.team[0].personnage || '-'}
                         </Table.Cell>
                         <Table.Cell>
-                            <Header>
-                                <Header.Content>
-                                    {users.degat_max}
-                                </Header.Content>
-                            </Header>
+                            {user?.team[0].degat_max || '-'}
                         </Table.Cell>
-                    </Table.Row>)}
+                    </Table.Row>)})}
                 </Table.Body>
             </Table>
+            </div>
         </>
     )
 }
